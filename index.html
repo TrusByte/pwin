@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="next-size-adjust" content="">
+    <link rel="stylesheet" href="./root.css?v=1.2.2">
+    <link rel="stylesheet" href="./style.css?v=1.2.2">
+    <title>PrimeWIN</title>
+</head>
+
+<body>
+    <div class="txn_status_div" id="txn_div">
+        <div class="txn_status_box">
+            <svg id="error_icon" xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 640 640"><!--!Font Awesome Free v7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.-->
+                <path
+                    d="M320 576C178.6 576 64 461.4 64 320C64 178.6 178.6 64 320 64C461.4 64 576 178.6 576 320C576 461.4 461.4 576 320 576zM320 384C302.3 384 288 398.3 288 416C288 433.7 302.3 448 320 448C337.7 448 352 433.7 352 416C352 398.3 337.7 384 320 384zM320 192C301.8 192 287.3 207.5 288.6 225.7L296 329.7C296.9 342.3 307.4 352 319.9 352C332.5 352 342.9 342.3 343.8 329.7L351.2 225.7C352.5 207.5 338.1 192 319.8 192z" />
+            </svg>
+            <svg id="spinner" xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 640 640"><!--!Font Awesome Free v7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.-->
+                <path
+                    d="M272 112C272 85.5 293.5 64 320 64C346.5 64 368 85.5 368 112C368 138.5 346.5 160 320 160C293.5 160 272 138.5 272 112zM272 528C272 501.5 293.5 480 320 480C346.5 480 368 501.5 368 528C368 554.5 346.5 576 320 576C293.5 576 272 554.5 272 528zM112 272C138.5 272 160 293.5 160 320C160 346.5 138.5 368 112 368C85.5 368 64 346.5 64 320C64 293.5 85.5 272 112 272zM480 320C480 293.5 501.5 272 528 272C554.5 272 576 293.5 576 320C576 346.5 554.5 368 528 368C501.5 368 480 346.5 480 320zM139 433.1C157.8 414.3 188.1 414.3 206.9 433.1C225.7 451.9 225.7 482.2 206.9 501C188.1 519.8 157.8 519.8 139 501C120.2 482.2 120.2 451.9 139 433.1zM139 139C157.8 120.2 188.1 120.2 206.9 139C225.7 157.8 225.7 188.1 206.9 206.9C188.1 225.7 157.8 225.7 139 206.9C120.2 188.1 120.2 157.8 139 139zM501 433.1C519.8 451.9 519.8 482.2 501 501C482.2 519.8 451.9 519.8 433.1 501C414.3 482.2 414.3 451.9 433.1 433.1C451.9 414.3 482.2 414.3 501 433.1z" />
+            </svg>
+
+            <svg id="check_circle" xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 640 640"><!--!Font Awesome Free v7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.-->
+                <path
+                    d="M320 576C178.6 576 64 461.4 64 320C64 178.6 178.6 64 320 64C461.4 64 576 178.6 576 320C576 461.4 461.4 576 320 576zM438 209.7C427.3 201.9 412.3 204.3 404.5 215L285.1 379.2L233 327.1C223.6 317.7 208.4 317.7 199.1 327.1C189.8 336.5 189.7 351.7 199.1 361L271.1 433C276.1 438 282.9 440.5 289.9 440C296.9 439.5 303.3 435.9 307.4 430.2L443.3 243.2C451.1 232.5 448.7 217.5 438 209.7z" />
+            </svg>
+
+
+            <div class="txn_status">
+                <span id="txn_status">Confirm Transaction</span>
+            </div>
+
+            <div class="txn_message">
+                <span id="txn_message"></span>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+
+        <div class="header">
+            <div class="header_contents">
+                <div class="brand_name">
+                    <span>
+                        PrimeWIN
+                    </span>
+                </div>
+
+                <div class="wallet_connect_disconnect" id="wallet_place" onclick="connectClicked(true)">
+                    <div class="loader" id="loader"></div>
+                    <div class="wallet_icon" id="wallet_icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
+                            <path
+                                d="M128 96C92.7 96 64 124.7 64 160L64 448C64 483.3 92.7 512 128 512L512 512C547.3 512 576 483.3 576 448L576 256C576 220.7 547.3 192 512 192L136 192C122.7 192 112 181.3 112 168C112 154.7 122.7 144 136 144L520 144C533.3 144 544 133.3 544 120C544 106.7 533.3 96 520 96L128 96zM480 320C497.7 320 512 334.3 512 352C512 369.7 497.7 384 480 384C462.3 384 448 369.7 448 352C448 334.3 462.3 320 480 320z" />
+                        </svg>
+                    </div>
+                    <div class="wallet_address" id="walletAddress">
+                        <span>Connect</span>
+                    </div>
+                    <svg class="wallet_arrow" id="wallet_arrow" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                </div>
+            </div>
+            <div class="wallet_overlay" id="wallet_overlay">
+                <div class="heading">
+                    <p id="overlay-title">Wallet Info</p>
+                </div>
+                <div class="hr"></div>
+                <div class="account_list" id="account_list">
+                </div>
+
+                <div class="wallet_list" id="wallet_list">
+                    <div class="wallet_div" onclick="connectWallet('trustwallet')">
+                        <div class="wallet_pic">
+                            <img src="./src/trustwallet.svg" alt="">
+                        </div>
+                        <span>Trust Wallet</span>
+                    </div>
+
+                    <div class="wallet_div" onclick='connectWallet("metamask")'>
+                        <div class="wallet_pic">
+                            <img src="./src/metamask.svg" alt="">
+                        </div>
+                        <span>Metamask Wallet</span>
+                    </div>
+                    <div class="wallet_div" onclick='connectWallet("coinbase")'>
+                        <div class="wallet_pic">
+                            <img src="./src/coinbase.svg" alt="">
+                        </div>
+                        <span>Coinbase Wallet</span>
+                    </div>
+                </div>
+                <div class="disconnect_button" id="disconnect_button">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g clip-path="url(#clip0_505_75644)">
+                            <path
+                                d="M14.9993 6.66667L18.3327 10M18.3327 10L14.9993 13.3333M18.3327 10H7.49935M12.4993 3.50337C11.4371 2.86523 10.2037 2.5 8.88824 2.5C4.89951 2.5 1.66602 5.85786 1.66602 10C1.66602 14.1421 4.89951 17.5 8.88824 17.5C10.2037 17.5 11.4371 17.1348 12.4993 16.4966"
+                                stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                        </g>
+                        <defs>
+                            <clipPath id="clip0_505_75644">
+                                <rect width="20" height="20" fill="black" />
+                            </clipPath>
+                        </defs>
+                    </svg>
+
+                    <p onclick="disconnectWallet()">Disconnect</p>
+                </div>
+            </div>
+        </div>
+        <div class="main-body" onclick="hideOverlay()">
+            <!-- Rules and Log -->
+            <div class="rules_logic" id="rules_logic">
+                <div class="return_back" onclick="hideRules()" id="go_back">
+                    <div class="return_button"><svg xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 640 640"><!--!Font Awesome Free v7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.-->
+                            <path
+                                d="M73.4 297.4C60.9 309.9 60.9 330.2 73.4 342.7L233.4 502.7C245.9 515.2 266.2 515.2 278.7 502.7C291.2 490.2 291.2 469.9 278.7 457.4L173.3 352L544 352C561.7 352 576 337.7 576 320C576 302.3 561.7 288 544 288L173.3 288L278.7 182.6C291.2 170.1 291.2 149.8 278.7 137.3C266.2 124.8 245.9 124.8 233.4 137.3L73.4 297.3z" />
+                        </svg>
+
+                        <span> Back</span>
+                    </div>
+
+                </div>
+                <span class="title">
+                    Rules and Reward Logic
+                </span>
+                <div class="instructions_box">
+                    <div class="instructions">
+                        <div class="title">01. Participation Fee</div>
+                        <div class="body">
+                            <span>To participate in the jackpot, a fee of <p style="color: black; display: inline;"
+                                    id="call_fee">
+                                    0.00 POL</p> is required.</span>
+                            <span>This amount is added to the reward pool.</span>
+                            <span>The participation fee is non-refundable under all circumstances.</span>
+                            <span>A small fee(≈ 0.1POL) is allocated to the contract creator for maintaining Chainlink
+                                VRF and covering operational expenses.</span>
+                        </div>
+                    </div>
+
+                    <div class="instructions">
+                        <div class="title">02. Random Number Generation</div>
+                        <div class="body">
+                            <span>The contract generates a secure random <p style="display: inline; color:blueviolet;">
+                                    4-digit number</p> 4-digit number.</span>
+                            <span>This process is powered by Chainlink VRF.</span>
+                            <span>The randomness cannot be controlled or influenced by any party, including Chainlink
+                                VRF or validators.</span>
+                        </div>
+                    </div>
+
+                    <div class="instructions">
+                        <div class="title">03. Winning Conditions</div>
+                        <div class="body">
+                            <span>The number generated by Chainlink VRF must meet the following conditions to be
+                                eligible for a win:</span>
+                            <span>The number must end with the digit 3.</span>
+                            <span>The number must be a prime number.</span>
+                            <span>Both conditions must be satisfied to qualify for a win or to be assigned as the Prime
+                                Address.</span>
+                        </div>
+                    </div>
+
+                    <div class="instructions">
+                        <div class="title">04. Prime Address Logic</div>
+                        <div class="body">
+                            <span>Initially, there is no Prime Address (set to zero)</span>
+                            <span>If the Prime Address is empty and a user meets the winning condition, they become
+                                the new Prime Address</span>
+                            <span>Only one Prime Address exists at a time</span>
+                            <span>When a winner appears and Prime Address is set, rewards are distributed among winner
+                                and Prime Address</span>
+                            <span>After reward distribution, Prime Address resets back to zero</span>
+                        </div>
+                    </div>
+
+                    <div class="instructions">
+                        <div class="title">05. Reward Distribution</div>
+                        <div class="body">
+                            <span>When the winning condition is met and a Prime Address exists, a jackpot is
+                                triggered.</span>
+                            <span>The reward is distributed between the winner and the Prime Address.</span>
+                            <span>
+                                <p style="color: green; display: inline;">
+                                    70% </p>
+                                of the reward is allocated to the winner.
+                            </span>
+                            <span>
+                                <p style="color: green; display: inline;">
+                                    30% </p> of the reward is allocated to the Prime Address.
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="instructions">
+                        <div class="title">06. Decentralization & Fairness</div>
+                        <div class="body">
+                            <span>No admin or external party can control the outcome</span>
+                            <span>All logic is executed automatically by the smart contract</span>
+                            <span>Randomness is provided securely by Chainlink VRF</span>
+                            <span>No one can manipulate or predict results</span>
+                        </div>
+                    </div>
+
+                    <div class="instructions">
+                        <div class="title">07. Continuous Process</div>
+                        <div class="body">
+                            <span>Each new user repeats the same process</span>
+                            <span>The reward pool keeps increasing with every entry</span>
+                            <span>The system runs continuously without interruption</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="balance-section" id="balance_section">
+                <span class="bal_title">
+                    My Balance
+                </span>
+
+                <div class="pol_balance_section">
+                    <div class="bal_sec">
+                        <div class="left_sec">
+                            <div class="pol_image">
+                                <img src="./src/ploygon.svg" alt="" srcset="">
+                            </div>
+                            <span>Polygon(POL)</span>
+                        </div>
+                        <span id="pol_balance">0.00</span>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <!-- Lottery Sections -->
+            <div class="opt_title" id="opt_title">
+                <span class="bal_title">
+                    PrimeWIN Dashborad
+                </span>
+            </div>
+            <div class="game_options" id="game_section">
+                <div class="options_expanded">
+                    <div class="row">
+                        <span class="attribute reward_amount">Reward Pool</span>
+                        <span class="value reward_amount" id="reward_pool"> 0.00 POL</span>
+                    </div>
+                    <div class="row">
+                        <span class="attribute">Fees</span>
+                        <span class="value fees_amount" id="call_fees">0.00 POL</span>
+                    </div>
+
+
+                    <div class="row">
+                        <span class="attribute">Winning Probablity</span>
+                        <span class="value"> ≈ 3.1%</span>
+                    </div>
+                    <div class="row address">
+                        <span class="attribute">Prime Address</span>
+                        <span class="value" id="prime_address">No active Prime Address</span>
+                    </div>
+                    <div class="row">
+                        <span class="attribute">Txn Type</span>
+                        <span class="attribute" id="">PrimeWIN</span>
+                    </div>
+                </div>
+            </div>
+            <div class="how_to_section" id="how_to_section">
+                <div class="options_expanded" onclick="showRules()">
+                    <div class="row">
+                        <span class="attribute">Rules & Reward Logic</span>
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 640 640"><!--!Font Awesome Free v7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.-->
+                            <path
+                                d="M480 96C515.3 96 544 124.7 544 160L544 480C544 515.3 515.3 544 480 544L160 544C124.7 544 96 515.3 96 480L96 160C96 124.7 124.7 96 160 96L480 96zM368 360C368 373.3 378.7 384 392 384C405.3 384 416 373.3 416 360L416 248C416 234.7 405.3 224 392 224L280 224C266.7 224 256 234.7 256 248C256 261.3 266.7 272 280 272L334.1 272L231.1 375C221.7 384.4 221.7 399.6 231.1 408.9C240.5 418.2 255.7 418.3 265 408.9L368 305.9L368 360z" />
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section" id="section3">
+                <div class="pay_button" onclick="enterGame()">
+                    <span>Pay (1.00 POL)</span>
+                </div>
+            </div>
+            <div class="foot_section" id="foot_section">
+                <div class="v_section">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" enable-background="new 0 0 64 64">
+                        <path d="M32,2C15.431,2,2,15.432,2,32c0,16.568,13.432,30,30,30c16.568,0,30-13.432,30-30C62,15.432,48.568,2,32,2z M25.025,50
+                            l-0.02-0.02L24.988,50L11,35.6l7.029-7.164l6.977,7.184l21-21.619L53,21.199L25.025,50z"
+                            fill="green" />
+                    </svg>
+                    <div class="verify">
+                        <span>PrimeWIN code is Verified and Transparent, you can view and verify code on polygon
+                            blockchain</span>
+                    </div>
+                </div>
+
+                <div class="ref_link">
+                    <a href="">View on Polygonscan</a>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    </div>
+    <script src="./style.js?V=1.0.4"></script>
+    <script src="./fun.js?V=1.0.4"></script>
+    <script src="./ethers.js?v=1.0.4"></script>
+    <script src="./app.js?v=1.0.4"></script>
+</body>
+
+</html>

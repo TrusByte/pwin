@@ -1,0 +1,243 @@
+font-face {
+    font-family: "Devanagri";
+    src: url("./AnekDevanagari-Bold.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Devnagri_Semibold";
+    src: url("./AnekDevanagari-SemiBold.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Devnagri_Exbold";
+    src: url("./AnekDevanagari_SemiCondensed-ExtraBold.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "DM Sans Bold";
+    src: url("./DMSans-Bold.ttf") format("truetype");
+    font-weight: 1000;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "DM Sans ExBold";
+    src: url("./DMSans-ExtraBold.ttf") format("truetype");
+    font-weight: 1000;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "DM Sans Semi-Bold";
+    src: url("./DMSans-SemiBold.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "DM Sans Medium";
+    src: url("./DMSans_24pt-Medium.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+:root {
+    --1: min(1px, 0.06944vw);
+    --1h: min(1px, 0.06944vh);
+}
+
+body,
+* {
+    margin: 0;
+    padding: 0;
+    font-family: inherit;
+    display: flex;
+}
+
+title {
+    display: none;
+}
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    text-wrap: pretty;
+    scrollbar-width: none;
+
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+    width: 100vw;
+}
+
+.wallet_connect_disconnect {
+    border-radius: calc(var(--1)*12);
+    border: .5px solid #00e1ff;
+    padding: calc(var(--1)*8) calc(var(--1)*9);
+    gap: calc(var(--1)*26);
+    font-family: "DM Sans Bold";
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(var(--1)*36);
+    position: relative;
+    cursor: pointer;
+    gap: calc(var(--1)*6);
+    background: linear-gradient(319deg, #00d0ff -1.9%, #b0fff6 17.34%, #00d0ff 87.36%);
+}
+
+.wallet_connect_disconnect .wallet_icon {
+    display: none;
+    border-radius: 50px;
+    padding: calc(var(--1)*2);
+    background: white;
+}
+
+.wallet_connect_disconnect .wallet_icon svg {
+    fill: #00d0ff;
+    height: 18px;
+    width: 18px;
+
+}
+
+.wallet_connect_disconnect .wallet_address {
+    margin-right: calc(var(--1)*7);
+    font-size: calc(var(--1) * 15);
+}
+
+.dashboard {
+    gap: calc(var(--1)*24);
+}
+
+.wallet_overlay {
+    overflow-y: auto;
+    height: auto;
+    z-index: 9999;
+    position: absolute;
+    max-height: 80vh;
+    border: .1px solid #00d0ff;
+    min-width: 150px;
+    top: calc(var(--1) * 85);
+    right: 5px;
+    border-radius: calc(var(--1) * 12);
+    background: white;
+    display: none;
+    flex-direction: column;
+    padding: 5px;
+    box-shadow: 0 0 10px 0px rgba(0, 0, 0, 0.809);
+    transition: transform .5s ease-in-out;
+}
+
+.loader {
+    width: 20px;
+    height: 20px;
+    border: 3px solid #55eaff;
+    border-top: 3px solid #00f7ff00;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.wallet_connect_disconnect {
+    -webkit-tap-highlight-color: transparent;
+}
+
+
+.wallet_connect_disconnect:active {
+    background: linear-gradient(319deg, #00bae4 -1.9%, #b0fff6 17.34%, #00b2da 87.36%);
+}
+
+.txn_status_div {
+    display: none;
+    position: absolute;
+    z-index: 999;
+    justify-content: center;
+    align-items: center;
+    padding: 0px 10px;
+    width: 100vw;
+    height: 100vh;
+    background: #0000008b;
+}
+
+.txn_status_box {
+    display: flex;
+    flex-direction: column;
+    background: white;
+    border-radius: calc(var(--1)*22);
+    align-items: center;
+    padding: 20px 16px;
+    font-family: "DM Sans ExBold";
+    text-align: center;
+    min-width: 200px;
+    max-width: 500px;
+    width: 90%;
+    box-shadow: 0 0 10px 0px rgba(0, 0, 0, 0.809);
+}
+
+.txn_status_box svg {
+    width: 70px;
+    height: 70px;
+    margin: 20px;
+}
+
+.txn_status {
+    margin: 10px 0px;
+    font-size: calc(var(--1)*22);
+    max-width: 250px;
+}
+
+.txn_message {
+    max-width: 250px;
+    margin: 10px 0px;
+
+}
+
+#spinner {
+    display: flex;
+    animation: spin 1s linear infinite;
+    transform-origin: center;
+}
+
+#check_circle {
+    display: none;
+}
+
+#error_icon {
+    display: none;
+}
