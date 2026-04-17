@@ -140,42 +140,42 @@ async function connectWallet(walletName) {
     const encodedUrl = encodeURIComponent(dappUrl);
     // Mobile deep links
     if (isMobile()) {
-        document.querySelector('w3m-button').click()
-        if (walletName == "metamask") {
-            window.location.href =
-                "https://metamask.app.link/dapp/" + dappUrl.replace("https://", "");
-            if (window.ethereum) {
-                await provider.send("eth_requestAccounts", []);
-                signer = await provider.getSigner();
+        // document.querySelector('w3m-button').click()
+        // if (walletName == "metamask") {
+        //     window.location.href =
+        //         "https://metamask.app.link/dapp/" + dappUrl.replace("https://", "");
+        //     if (window.ethereum) {
+        //         await provider.send("eth_requestAccounts", []);
+        //         signer = await provider.getSigner();
 
-                localStorage.setItem("walletConnected", "true"); // ADD THIS
-                return;
-            }
-        }
-        else if (walletName == "coinbase") {
-            window.location.href =
-                "https://go.cb-w.com/dapp?cb_url=" + encodedUrl;
+        //         localStorage.setItem("walletConnected", "true"); // ADD THIS
+        //         return;
+        //     }
+        // }
+        // else if (walletName == "coinbase") {
+        //     window.location.href =
+        //         "https://go.cb-w.com/dapp?cb_url=" + encodedUrl;
 
-            if (window.ethereum) {
-                await provider.send("eth_requestAccounts", []);
-                signer = await provider.getSigner();
+        //     if (window.ethereum) {
+        //         await provider.send("eth_requestAccounts", []);
+        //         signer = await provider.getSigner();
 
-                localStorage.setItem("walletConnected", "true"); // ADD THIS
-                return;
-            }
-        }
-        else if (walletName == "trustwallet") {
-            window.location.href =
-                "https://link.trustwallet.com/open_url?coin_id=60&url=" + encodedUrl;
-            if (window.ethereum) {
-                await provider.send("eth_requestAccounts", []);
-                signer = await provider.getSigner();
+        //         localStorage.setItem("walletConnected", "true"); // ADD THIS
+        //         return;
+        //     }
+        // }
+        // else if (walletName == "trustwallet") {
+        //     window.location.href =
+        //         "https://link.trustwallet.com/open_url?coin_id=60&url=" + encodedUrl;
+        //     if (window.ethereum) {
+        //         await provider.send("eth_requestAccounts", []);
+        //         signer = await provider.getSigner();
 
-                localStorage.setItem("walletConnected", "true"); // ADD THIS
-                return;
-            }
-        }
-        return;
+        //         localStorage.setItem("walletConnected", "true"); // ADD THIS
+        //         return;
+        //     }
+        // }
+        // return;
     } else if (window.ethereum) {
         provider = new ethers.BrowserProvider(window.ethereum);
         const accounts = await provider.send("eth_requestAccounts", []);
