@@ -50,7 +50,7 @@ if (window.ethereum) {
     window.ethereum.on('chainChanged', () => location.reload());
 }
 async function loadABI() {
-    const response = await fetch("./abi.json");   // your ABI file
+    const response = await fetch("./src/files/abi.json");   // your ABI file
     const json = await response.json();
     abi = json.abi;              // must be JSON array
 }
@@ -77,8 +77,6 @@ async function handleAccountsChanged(accounts) {
 
     document.getElementById("wallet_place").setAttribute("onclick", "showWallets()")
     document.getElementById("account_list").innerHTML = wallet;
-    lom.style.display = "none"
-    wallet_icon.style.display = "flex"
     document.getElementById("wallet_list").style.display = "none";
     signer = await provider.getSigner();
     contract = new ethers.Contract(contractAddress, abi, signer);
@@ -202,6 +200,8 @@ async function onWalletConnected(account, index) {
     document.getElementById("wallet_place").setAttribute("onclick", "showWallets()");
     document.getElementById("wallet_arrow").style.display = "flex";
     document.getElementById("walletAddress").innerText = shortAddress(account[index], isMobile);
+    lom.style.display = "none"
+    wallet_icon.style.display = "flex"
 }
 
 function showConnectButton() {

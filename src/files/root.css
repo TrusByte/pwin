@@ -1,6 +1,6 @@
 font-face {
     font-family: "Devanagri";
-    src: url("./AnekDevanagari-Bold.ttf") format("truetype");
+    src: url("./src/fonts/AnekDevanagari-Bold.ttf") format("truetype");
     font-weight: 400;
     font-style: normal;
     font-display: swap;
@@ -8,7 +8,7 @@ font-face {
 
 @font-face {
     font-family: "Devnagri_Semibold";
-    src: url("./AnekDevanagari-SemiBold.ttf") format("truetype");
+    src: url("./src/fonts/AnekDevanagari-SemiBold.ttf") format("truetype");
     font-weight: 400;
     font-style: normal;
     font-display: swap;
@@ -16,7 +16,7 @@ font-face {
 
 @font-face {
     font-family: "Devnagri_Exbold";
-    src: url("./AnekDevanagari_SemiCondensed-ExtraBold.ttf") format("truetype");
+    src: url("./src/fonts/AnekDevanagari_SemiCondensed-ExtraBold.ttf") format("truetype");
     font-weight: 400;
     font-style: normal;
     font-display: swap;
@@ -24,7 +24,7 @@ font-face {
 
 @font-face {
     font-family: "DM Sans Bold";
-    src: url("./DMSans-Bold.ttf") format("truetype");
+    src: url("../fonts/DMSans-Bold.ttf") format("truetype");
     font-weight: 1000;
     font-style: normal;
     font-display: swap;
@@ -32,7 +32,7 @@ font-face {
 
 @font-face {
     font-family: "DM Sans ExBold";
-    src: url("./DMSans-ExtraBold.ttf") format("truetype");
+    src: url("../fonts/DMSans-ExtraBold.ttf") format("truetype");
     font-weight: 1000;
     font-style: normal;
     font-display: swap;
@@ -40,7 +40,7 @@ font-face {
 
 @font-face {
     font-family: "DM Sans Semi-Bold";
-    src: url("./DMSans-SemiBold.ttf") format("truetype");
+    src: url("../fonts/DMSans-SemiBold.ttf") format("truetype");
     font-weight: 400;
     font-style: normal;
     font-display: swap;
@@ -48,7 +48,7 @@ font-face {
 
 @font-face {
     font-family: "DM Sans Medium";
-    src: url("./DMSans_24pt-Medium.ttf") format("truetype");
+    src: url("../fonts/DMSans_24pt-Medium.ttf") format("truetype");
     font-weight: 400;
     font-style: normal;
     font-display: swap;

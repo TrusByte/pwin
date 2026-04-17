@@ -271,6 +271,7 @@
 
 .game_options .row .attribute {
     font-weight: 500;
+    font-family: "DM Sans ExBold";
 }
 
 .how_to_section .attribute {
@@ -374,6 +375,7 @@
     word-wrap: break-word;
     text-align: right;
     overflow-wrap: anywhere;
+    font-family: "DM Sans Bold";
 }
 
 
@@ -399,7 +401,7 @@
     justify-content: center;
 }
 
-#section3{
+#section3 {
     cursor: pointer;
 }
 
