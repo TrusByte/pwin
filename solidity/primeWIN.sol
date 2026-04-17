@@ -25,9 +25,8 @@ contract PrimeWIN1 {
     // STATE
     // -------------------------
     address public owner;
-    address public  pendingOwner;
+    address public pendingOwner;
     address public primeAddress;
-
 
     uint256 public addToPool = 0.9 ether;
     uint256 public vrfFee = 0.05 ether;
@@ -46,7 +45,7 @@ contract PrimeWIN1 {
 
     bytes32 public keyHash =
         0x816bedba8a50b294e5cbd47842baf240c2385f2eaf719edbd4f250a137a8c899;
-    uint32 public callbackGasLimit = 200000;
+    uint32 public callbackGasLimit = 240000;
     uint16 public requestConfirmations = 3;
     uint32 public numWords = 1;
 
@@ -77,12 +76,17 @@ contract PrimeWIN1 {
         owner = msg.sender;
     }
 
-    function updateFees(uint256 pool_amount, uint256 vrf_amount, uint256 creator_amount) external {
+    function updateFees(
+        uint256 pool_amount,
+        uint256 vrf_amount,
+        uint256 creator_amount
+    ) external {
         require(msg.sender == owner, "OWNER CAN UPDATE THIS SETTINGS");
         addToPool = pool_amount;
         vrfFee = vrf_amount;
         creatorFee = creator_amount;
     }
+
     function transferOwnership(address newOwner) external {
         require(msg.sender == owner, "Not owner");
         require(newOwner != address(0), "Zero address");
@@ -113,7 +117,7 @@ contract PrimeWIN1 {
         vrfReserve += vrfFee;
 
         (bool ok, ) = payable(owner).call{value: creatorFee}("");
-        require(ok, "Owner transfer failed");
+        require(ok, "Fee Transfer Failed");
 
         _requestVRF(msg.sender);
     }
@@ -122,9 +126,9 @@ contract PrimeWIN1 {
     // AUTO VRF FEE
     // -------------------------
     function _getVRFFee() internal view returns (uint256) {
-        if (block.basefee > 50 gwei) return 0.03 ether;
-        if (block.basefee > 30 gwei) return 0.02 ether;
-        return 0.01 ether;
+        if (block.basefee > 50 gwei) return 0.04 ether;
+        if (block.basefee > 30 gwei) return 0.03 ether;
+        return 0.02 ether;
     }
 
     // -------------------------

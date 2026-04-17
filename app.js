@@ -44,7 +44,7 @@ function isMobile() {
     return window.innerWidth < 900;
     // return false
 }
-const contractAddress = "0xfE08B0C2fEd31d54960471596EEfC91Ab9EA01fA";
+const contractAddress = "0xe85417eb08d47fd4E648230D286c43f04Fa23862";
 if (window.ethereum) {
     window.ethereum.on('accountsChanged', handleAccountsChanged);
     window.ethereum.on('chainChanged', () => location.reload());
