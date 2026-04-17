@@ -140,6 +140,7 @@ async function connectWallet(walletName) {
     const encodedUrl = encodeURIComponent(dappUrl);
     // Mobile deep links
     if (isMobile()) {
+        document.querySelector('w3m-button').click()
         if (walletName == "metamask") {
             window.location.href =
                 "https://metamask.app.link/dapp/" + dappUrl.replace("https://", "");
